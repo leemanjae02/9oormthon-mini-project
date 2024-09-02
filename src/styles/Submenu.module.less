@@ -1,0 +1,37 @@
+.submenu {
+  width: 100%;
+  height: 70px;
+  border-bottom: 1px solid #d6d6d6;
+  background-color: #f2f2f2;
+  .wrap {
+    box-sizing: border-box;
+    font-size: 0;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    overflow-x: auto;
+    padding: 15px;
+    ul {
+      margin: -3px auto;
+      max-width: 780px;
+      font-size: 0;
+      white-space: normal;
+      li {
+        margin: 3px 10px;
+        max-width: 130px;
+        display: inline-block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        a {
+          text-decoration: none;
+          font-size: 14px;
+          color: #444444;
+        }
+        a:hover {
+          color: #f91f15;
+        }
+      }
+    }
+  }
+}
