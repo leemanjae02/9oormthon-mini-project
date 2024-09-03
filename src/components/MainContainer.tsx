@@ -4,6 +4,9 @@ import MiniNoticeBoard from "./MiniNoticeBoard";
 import axios from "axios";
 
 import Leftside from "./Leftside";
+import LivePopularPosts from "./LivePopularPosts";
+import HotBoard from "./HotBoard";
+import SearchBar from "./SearchBar";
 
 const MainContainer = () => {
   const [boards, setBoards] = useState<BoardData[]>([]);
@@ -37,12 +40,9 @@ const MainContainer = () => {
         ))}
       </div>
       <div className={styles.rightside}>
-        <form className={styles.search}>
-          <input
-            type="text"
-            placeholder="전체 게시판의 글을 검색하세요!"
-          ></input>
-        </form>
+        <SearchBar />
+        <LivePopularPosts />
+        <HotBoard />
       </div>
     </div>
   );
