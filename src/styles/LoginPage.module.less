@@ -1,0 +1,149 @@
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 360px;
+  transform: translate(-50%, -50%);
+  h1 {
+    margin: 0 auto 40px;
+    width: 210px;
+    height: 56px;
+    background-image: url(/img/logolight.png);
+    background-size: cover;
+  }
+  input {
+    outline: none;
+    border: none;
+  }
+  .input {
+    input[type="text"] {
+      display: block;
+      box-sizing: border-box;
+      margin-top: 4px;
+      padding: 10px;
+      border-radius: 12px;
+      width: 100%;
+      line-height: 24px;
+      color: #292929;
+      font-size: 16px;
+      background-color: #f2f2f2;
+      background-repeat: no-repeat;
+      background-position: right 8px center;
+      background-size: 24px 24px;
+    }
+    input[type="password"] {
+      display: block;
+      box-sizing: border-box;
+      margin-top: 4px;
+      padding: 10px;
+      border-radius: 12px;
+      width: 100%;
+      line-height: 24px;
+      color: #292929;
+      font-size: 16px;
+      background-color: #f2f2f2;
+      background-repeat: no-repeat;
+      background-position: right 8px center;
+      background-size: 24px 24px;
+    }
+  }
+  input[type="submit"] {
+    margin-top: 4px;
+    padding: 10px;
+    border-radius: 12px;
+    width: 100%;
+    line-height: 24px;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #f91f15;
+    cursor: pointer;
+  }
+  .socialBox {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 20%;
+
+    .socialLine {
+      position: relative;
+      bottom: -8px;
+      display: block;
+      margin: 0;
+      width: 100%;
+      height: 1px;
+      background-color: #f1f3f5;
+      border: none;
+    }
+    span {
+      padding: 0 8px;
+      margin-bottom: 16px;
+      font-size: 11px;
+      line-height: 16px;
+      letter-spacing: -0.3px;
+      color: #abb0b5;
+      z-index: 1;
+      background-color: #fff;
+    }
+    .socialItem {
+      display: flex;
+      margin: auto;
+      -moz-column-gap: 12px;
+      column-gap: 12px;
+
+      div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 5px;
+        box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+      }
+      div:hover {
+        cursor: pointer;
+      }
+      .kakao {
+        background-color: #fcdc40;
+
+        img {
+          width: 50%;
+          height: 50%;
+          background-size: cover;
+        }
+      }
+      .google {
+        img {
+          width: 50%;
+          height: 50%;
+          background-size: cover;
+        }
+      }
+      .naver {
+        img {
+          width: 100%;
+          height: 100%;
+          background-size: cover;
+        }
+      }
+    }
+    .signup {
+      width: 100px;
+      height: 30px;
+      margin-top: 30px;
+      outline: none;
+      border: none;
+      background-color: #fff;
+      a {
+        color: #666666;
+        text-decoration: none;
+        font-size: 16px;
+      }
+    }
+    .signup:hover {
+      cursor: pointer;
+    }
+  }
+}
