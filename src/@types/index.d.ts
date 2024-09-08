@@ -56,3 +56,13 @@ interface MyComment {
 interface MyCommentData {
   myComments: MyComment[];
 }
+
+interface JoinData {
+  studentNumber: string;
+  universityName: string;
+  name: string;
+  email: string;
+  id: string;
+  password: string;
+  checkPassword: string;
+}

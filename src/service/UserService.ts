@@ -23,16 +23,55 @@ export const getNaverLoginURL = (STATE: string) => {
 export const getToken = async (authCode: string, provider: string) => {
   try {
     const response = await CustomAxios.post(
-      `${provider}/token?code=${authCode}`
+      `/${provider}/token?code=${authCode}`
     );
     if (response.status === 200) {
-      const token = response.data.token;
-      window.localStorage.setItem("token", token);
-      return true;
+      const { success, data } = response.data;
+      if (success) {
+        const { token, userName } = data;
+        window.localStorage.setItem("token", token);
+        window.localStorage.setItem("userName", userName);
+        return { success: true, userName };
+      }
     }
-    return false;
+
+    return { success: false };
   } catch (error) {
     console.log(error);
-    return false;
+    return { success: false };
+  }
+};
+
+export const login = async (id: string, password: string) => {
+  try {
+    const formData = new FormData();
+    formData.append("id", id);
+    formData.append("password", password);
+    const response = await CustomAxios.post("/user/login", formData);
+    if (response.status === 200) {
+      const { success, data } = response.data;
+      if (success) {
+        const { token, userName } = data;
+        window.localStorage.setItem("token", token);
+        window.localStorage.setItem("userName", userName);
+        return { success: true, userName };
+      }
+    }
+
+    return { success: false };
+  } catch (error) {
+    console.log(error);
+    return { success: false };
+  }
+};
+
+export const join = async (data: JoinData) => {
+  try {
+    const response = await CustomAxios.post("/user/join", {
+      data,
+    });
+    return response.data; // 서버응답(에러문구이거나 성공문구)
+  } catch (error) {
+    console.log(error);
   }
 };
