@@ -11,8 +11,8 @@ const AuthPage = () => {
         const provider = window.localStorage.getItem("provider");
 
         if (code && provider) {
-          const success = await getToken(code, provider);
-          if (success) {
+          const response = await getToken(code, provider);
+          if (response.success) {
             navigate("/");
           }
         }
