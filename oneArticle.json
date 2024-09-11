@@ -1,0 +1,52 @@
+{
+  "articleData": [
+    {
+      "boardId": 1,
+      "boardName": "자유게시판",
+      "posts": [
+        {
+          "poastId": 1,
+          "title": "첫 번째 게시글",
+          "author": "익명",
+          "timestamp": "2024-09-04T12:30:00Z",
+          "content": "이것은 게시글 내용입니다.",
+          "likes": 150,
+          "commentsCount": 25,
+          "scrapsCount": 10,
+          "comments": [
+            {
+              "commentId": 1,
+              "author": "익명1",
+              "timestamp": "2024-09-04T12:35:00Z",
+              "content": "첫 번째 댓글입니다."
+            },
+            {
+              "commentId": 2,
+              "author": "익명2",
+              "timestamp": "2024-09-04T12:40:00Z",
+              "content": "두 번째 댓글입니다."
+            }
+          ]
+        },
+        {
+          "postId": 2,
+          "title": "두 번째 게시글",
+          "author": "익명",
+          "timestamp": "2024-09-05T10:00:00Z",
+          "content": "이것은 두 번째 게시글 내용입니다.",
+          "likes": 200,
+          "commentsCount": 50,
+          "scrapsCount": 30,
+          "comments": [
+            {
+              "commentId": 1,
+              "author": "익명3",
+              "timestamp": "2024-09-05T10:10:00Z",
+              "content": "첫 번째 댓글입니다."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

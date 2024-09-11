@@ -8,9 +8,10 @@ import { useNavigate } from "react-router-dom";
 
 const SignUpPage = () => {
   const navigate = useNavigate();
-  const [studentNumber, setStudentNumber] = useState<string>("");
+  const [year, setYear] = useState<number>(0);
   const [universityName, onChangeUniversityName] = useInput();
   const [name, onChangeName] = useInput();
+  const [nickName, onChangeNickName] = useInput();
   const [email, onChangeEmail] = useInput();
   const [id, onChangeId] = useInput();
   const [password, onChangePassword] = useInput();
@@ -19,9 +20,10 @@ const SignUpPage = () => {
 
   const handleJoin = async () => {
     const joinData: JoinData = {
-      studentNumber,
+      year,
       universityName,
       name,
+      nickName,
       email,
       id,
       password,
@@ -35,7 +37,7 @@ const SignUpPage = () => {
       setResponseMessage(response);
     }
   };
-
+  console.log(year, typeof year);
   return (
     <div className={styles.container}>
       <section className={styles.signupinfor}>
@@ -48,7 +50,7 @@ const SignUpPage = () => {
         </div>
         <div className={styles.inputcontainer}>
           <SignUpComponent
-            setStudentNumber={setStudentNumber}
+            setYear={setYear}
             onChangeUniversityName={onChangeUniversityName}
           />
           <h2 className={styles.h2text}>회원정보</h2>
@@ -62,6 +64,19 @@ const SignUpPage = () => {
                 placeholder="이름을 입력하세요."
                 value={name}
                 onChange={onChangeName}
+              />
+            </div>
+          </div>
+          <div className={styles.inputbox}>
+            <div className={styles.label}>
+              <label>닉네임</label>
+            </div>
+            <div className={styles.inputtext}>
+              <input
+                type="text"
+                placeholder="별명을 입력하세요."
+                value={nickName}
+                onChange={onChangeNickName}
               />
             </div>
           </div>

@@ -27,7 +27,6 @@ interface NoticeBoardArticle {
 interface Comment {
   commentId: number;
   author: string;
-  timestamp: string;
   content: string;
 }
 
@@ -58,9 +57,10 @@ interface MyCommentData {
 }
 
 interface JoinData {
-  studentNumber: string;
+  year: number;
   universityName: string;
   name: string;
+  nickName: string;
   email: string;
   id: string;
   password: string;

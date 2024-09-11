@@ -28,8 +28,7 @@ const LoginPage = () => {
     window.location.href = getGoogleLoginURL();
   };
 
-  const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleLogin = async () => {
     try {
       const response = await login(id, password);
       if (response.success) {
