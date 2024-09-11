@@ -1,43 +1,72 @@
+import React, { useState } from "react";
 import styles from "../styles/NoticeBoard.module.less";
+import Write from "./Write";
 
-const NoticeBoard = () => {
+const NoticeBoard: React.FC<NoticeBoardData> = ({ boardName, articles }) => {
+  const [write, setWrite] = useState<boolean>(false);
+
+  const handleWrite = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setWrite(!write);
+  };
+
   return (
     <div>
       <div className={styles.wraptitle}>
         <h1>
-          <a href="#">자유게시판</a>
+          <a href="#">{boardName}</a>
         </h1>
       </div>
-      <div className={styles.wraparticle}>
-        <article className={styles.item}>
-          <a className={styles.article}>
-            <img src="/img/profil.png" />
-            <div className={styles.profil}>
-              <h3 className={styles.usertype}>익명</h3>
-              <time>09/02 20:36</time>
+      <div className={styles.wrapbubbles}>
+        <div className={styles.question}>
+          <div className={styles.group}></div>
+          <div className={styles.items}>
+            <div className={styles.item}>
+              <a href="#">
+                <span>test</span>
+              </a>
             </div>
-            <ul className={styles.status}>
-              <li>쪽지</li>
-              <li>신고</li>
-            </ul>
-            <hr />
-            <h2>테스트</h2>
-            <p>
-              테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트테스트
-            </p>
-            <ul className={styles.leftbtn}>
-              <li title="공감" className={styles.vote}>
-                0
-              </li>
-              <li title="댓글" className={styles.comment}>
-                1
-              </li>
-              <li title="스크랩" className={styles.scrap}>
-                0
-              </li>
-            </ul>
+          </div>
+        </div>
+        <div className={styles.popular}>
+          <div className={styles.group}></div>
+          <div className={styles.items}>
+            {articles.map((article) => (
+              <div className={styles.item} key={article.id}>
+                <a href="#">
+                  <span>{article.title}</span>
+                  <div className={styles.posvote}>{article.votes}</div>
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      <div className={styles.wraparticles}>
+        {write ? (
+          <>
+            <Write setWrite={setWrite} />
+          </>
+        ) : (
+          <a className={styles.wraparticlebtn} onClick={handleWrite}>
+            새 글을 작성해주세요!
           </a>
-        </article>
+        )}
+
+        <div className={styles.articlelist}>
+          {articles.map((article) => (
+            <a href="#" key={article.id} className={styles.articleitem}>
+              <div className={styles.desc}>
+                <h2 className={styles.mediumbold}>{article.title}</h2>
+                <p className={styles.medium}>{article.content}</p>
+                <div className={styles.info}>
+                  <time className={styles.tsmall}></time>
+                  <h3 className={styles.hsmall}>{article.author}</h3>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
       </div>
     </div>
   );
