@@ -2,37 +2,37 @@ import React from "react";
 import styles from "../styles/SignUpComponent.module.less";
 
 interface SchoolData {
-  setStudentNumber: (studentNumber: string) => void;
+  setYear: (year: number) => void;
   onChangeUniversityName: (
     universityName: React.ChangeEvent<HTMLInputElement>
   ) => void;
 }
 
 const SignUpComponent: React.FC<SchoolData> = ({
-  setStudentNumber,
+  setYear,
   onChangeUniversityName,
 }) => {
   const handleStudentNumber = (e: React.ChangeEvent<HTMLSelectElement>) => {
     e.preventDefault();
-    setStudentNumber(e.target.value);
+    setYear(Number(e.target.value));
   };
   const optionObj = [
     { year: "", value: "연도 선택 (학번)" },
-    { year: 2024, value: "2024학번" },
-    { year: 2023, value: "2023학번" },
-    { year: 2022, value: "2022학번" },
-    { year: 2021, value: "2021학번" },
-    { year: 2020, value: "2020학번" },
-    { year: 2019, value: "2019학번" },
-    { year: 2018, value: "2018학번" },
-    { year: 2017, value: "2017학번" },
-    { year: 2016, value: "2016학번" },
-    { year: 2015, value: "2015학번" },
-    { year: 2014, value: "2014학번" },
-    { year: 2013, value: "2013학번" },
-    { year: 2012, value: "2012학번" },
-    { year: 2011, value: "2011학번" },
-    { year: 2010, value: "2010학번" },
+    { year: 24, value: "2024학번" },
+    { year: 23, value: "2023학번" },
+    { year: 22, value: "2022학번" },
+    { year: 21, value: "2021학번" },
+    { year: 20, value: "2020학번" },
+    { year: 19, value: "2019학번" },
+    { year: 18, value: "2018학번" },
+    { year: 17, value: "2017학번" },
+    { year: 16, value: "2016학번" },
+    { year: 15, value: "2015학번" },
+    { year: 14, value: "2014학번" },
+    { year: 13, value: "2013학번" },
+    { year: 12, value: "2012학번" },
+    { year: 11, value: "2011학번" },
+    { year: 10, value: "2010학번" },
   ];
   return (
     <div>

@@ -20,7 +20,10 @@ export const getNaverLoginURL = (STATE: string) => {
   }&redirect_uri=${import.meta.env.VITE_OAUTH_REDIRECT_URI}&state=${STATE}`;
 };
 
-export const getToken = async (authCode: string, provider: string) => {
+export const getToken = async (
+  authCode: string,
+  provider: string
+): Promise<{ success: boolean }> => {
   try {
     const response = await CustomAxios.post(
       `/${provider}/token?code=${authCode}`
@@ -28,10 +31,10 @@ export const getToken = async (authCode: string, provider: string) => {
     if (response.status === 200) {
       const { success, data } = response.data;
       if (success) {
-        const { token, userName } = data;
+        const token = data;
         window.localStorage.setItem("token", token);
-        window.localStorage.setItem("userName", userName);
-        return { success: true, userName };
+
+        return { success: true };
       }
     }
 
@@ -42,19 +45,21 @@ export const getToken = async (authCode: string, provider: string) => {
   }
 };
 
-export const login = async (id: string, password: string) => {
+export const login = async (
+  id: string,
+  password: string
+): Promise<{ success: boolean }> => {
   try {
-    const formData = new FormData();
-    formData.append("id", id);
-    formData.append("password", password);
-    const response = await CustomAxios.post("/user/login", formData);
+    const response = await CustomAxios.post("/user/login", {
+      id,
+      password,
+    });
     if (response.status === 200) {
       const { success, data } = response.data;
       if (success) {
-        const { token, userName } = data;
+        const token = data;
         window.localStorage.setItem("token", token);
-        window.localStorage.setItem("userName", userName);
-        return { success: true, userName };
+        return { success: true };
       }
     }
 
@@ -71,6 +76,32 @@ export const join = async (data: JoinData) => {
       data,
     });
     return response.data; // 서버응답(에러문구이거나 성공문구)
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const logout = async (token: string) => {
+  try {
+    const response = await CustomAxios.get("/user/logout", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const deleteUser = async (token: string) => {
+  try {
+    const response = await CustomAxios.get("/user/deleteUser", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    return response;
   } catch (error) {
     console.log(error);
   }

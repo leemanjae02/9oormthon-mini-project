@@ -1,0 +1,58 @@
+{
+  "myComment": [
+    {
+      "postId": 1,
+      "boardName": "자유게시판",
+      "postTitle": "오늘 날씨 정말 좋네요!",
+      "postContent": "가을이라 그런지 날씨가 너무 좋습니다. 모두 산책 나가세요!",
+      "author": "익명",
+      "votes": 15,
+      "comment": 5
+    },
+    {
+      "postId": 2,
+      "boardName": "비밀게시판",
+      "postTitle": "고민이 있어서 털어놓습니다...",
+      "postContent": "요즘 회사 일이 너무 힘들어요. 어떻게 극복해야 할지 모르겠어요.",
+      "author": "익명",
+      "votes": 15,
+      "comment": 5
+    },
+    {
+      "postId": 3,
+      "boardName": "홍보게시판",
+      "postTitle": "신제품 출시 이벤트 안내",
+      "postContent": "이번 주말에 신제품 출시 기념 이벤트가 열립니다. 많은 참여 부탁드립니다!",
+      "author": "익명",
+      "votes": 15,
+      "comment": 5
+    },
+    {
+      "postId": 4,
+      "boardName": "자유게시판",
+      "postTitle": "요즘 읽은 책 추천합니다",
+      "postContent": "최근에 '아몬드'라는 책을 읽었는데, 정말 감동적이었어요. 추천드립니다.",
+      "author": "이만재",
+      "votes": 15,
+      "comment": 5
+    },
+    {
+      "postId": 5,
+      "boardName": "비밀게시판",
+      "postTitle": "친구와의 갈등이 힘들어요",
+      "postContent": "오랜 친구와의 갈등이 심각해졌어요. 어떻게 해결해야 할까요?",
+      "author": "최기웅",
+      "votes": 15,
+      "comment": 5
+    },
+    {
+      "postId": 6,
+      "boardName": "홍보게시판",
+      "postTitle": "중고 책 판매합니다",
+      "postContent": "제가 읽은 책들 중 몇 권을 중고로 저렴하게 판매하려고 합니다. 관심 있으신 분은 연락 주세요.",
+      "author": "인호",
+      "votes": 15,
+      "comment": 5
+    }
+  ]
+}
