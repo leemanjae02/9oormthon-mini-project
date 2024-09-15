@@ -77,7 +77,7 @@ export const join = async (data: JoinData) => {
     });
     return response.data; // 서버응답(에러문구이거나 성공문구)
   } catch (error) {
-    console.log(error);
+    console.log("회원가입 실패", error);
   }
 };
 
@@ -88,9 +88,12 @@ export const logout = async (token: string) => {
         Authorization: `Bearer ${token}`,
       },
     });
-    return response;
+    if (response.status === 200) {
+      return true;
+    }
   } catch (error) {
-    console.log(error);
+    console.log("로그아웃 실패", error);
+    return null;
   }
 };
 
@@ -103,6 +106,22 @@ export const deleteUser = async (token: string) => {
     });
     return response;
   } catch (error) {
-    console.log(error);
+    console.log("회원탈퇴 실패", error);
+  }
+};
+
+export const getProfile = async (token: string) => {
+  try {
+    const response = await CustomAxios.get("http://localhost:3004/profile", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    if (response.status === 200) {
+      return response.data;
+    }
+  } catch (error) {
+    console.log("프로필 조회실패", error);
+    return null;
   }
 };

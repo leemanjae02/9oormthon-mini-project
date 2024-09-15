@@ -43,26 +43,16 @@ interface ArticleData {
   comments: Comment[];
 }
 
-interface MyComment {
-  postId: string;
+interface MyActivity {
+  boardId: string;
   boardName: string;
+  postId: string;
   postTitle: string;
   postContent: string;
   author: string;
   votes: number;
   comment: number;
 }
-interface MyCommentData {
-  myComments: MyComment[];
-}
-
-interface JoinData {
-  year: number;
-  universityName: string;
-  name: string;
-  nickName: string;
-  email: string;
-  id: string;
-  password: string;
-  checkPassword: string;
+interface MyActivityData {
+  myActivity: MyActivity[];
 }
