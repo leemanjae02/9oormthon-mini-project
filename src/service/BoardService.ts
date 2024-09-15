@@ -1,9 +1,8 @@
-import axios from "axios";
 import CustomAxios from "../api/CustomAxios";
 
 export const getMiniNoticeBoard = async () => {
   try {
-    const response = await axios.get("http://localhost:3001/boards");
+    const response = await CustomAxios.get("http://localhost:3001/boards");
     return response.data;
   } catch (error) {
     console.log(error);
@@ -14,7 +13,7 @@ export const getMiniNoticeBoard = async () => {
 export const getBoard = async (boardId: string) => {
   try {
     if (boardId) {
-      const response = await axios.get(
+      const response = await CustomAxios.get(
         `http://localhost:3002/boards/${boardId}`
       );
       return response.data;
@@ -22,6 +21,42 @@ export const getBoard = async (boardId: string) => {
   } catch (error) {
     console.error(error);
     throw error;
+  }
+};
+
+export const getMyComment = async () => {
+  try {
+    const response = await CustomAxios.get("http://localhost:3003/myComment"); // 내가 쓴 댓글 조회
+    if (response.status === 200) {
+      return response;
+    }
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
+
+export const getMyArticle = async () => {
+  try {
+    const response = await CustomAxios.get("http://localhost:3003/myArticle"); // 내가 쓴 글 조회
+    if (response.status === 200) {
+      return response;
+    }
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+};
+
+export const getMyScrap = async () => {
+  try {
+    const response = await CustomAxios.get("http://localhost:3003/myScrap"); // 내 스크랩 조회
+    if (response.status === 200) {
+      return response;
+    }
+  } catch (error) {
+    console.log(error);
+    return null;
   }
 };
 
