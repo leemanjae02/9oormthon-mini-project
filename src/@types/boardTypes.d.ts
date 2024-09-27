@@ -5,25 +5,14 @@ interface BoardData {
 }
 
 interface Post {
-  id: number;
-  title: string;
-  content: string;
+  postId: number;
+  postTitle: string;
+  postContent: string;
+  author?: string; // 전체 게시판 조회시에는(메인페이지) 익명, 좋아요, 댓글이 필요 없음
+  likes?: number;
+  comments?: number;
 }
 
-interface NoticeBoardData {
-  boardId: number;
-  boardName: string;
-  articles: NoticeBoardArticle[];
-}
-
-interface NoticeBoardArticle {
-  id: number;
-  title: string;
-  content: string;
-  author: string;
-  votes: number;
-  comments: number;
-}
 interface Comment {
   commentId: number;
   author: string;
@@ -41,18 +30,4 @@ interface ArticleData {
   commentsCount: number;
   scrapsCount: number;
   comments: Comment[];
-}
-
-interface MyActivity {
-  boardId: string;
-  boardName: string;
-  postId: string;
-  postTitle: string;
-  postContent: string;
-  author: string;
-  votes: number;
-  comment: number;
-}
-interface MyActivityData {
-  myActivity: MyActivity[];
 }

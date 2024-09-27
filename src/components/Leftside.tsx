@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { getProfile, logout } from "../service/UserService";
+import { getProfile, logout } from "../service/UserService.ts";
 import styles from "../styles/Leftside.module.less";
 import { useEffect, useState } from "react";
 
@@ -7,7 +7,7 @@ const Leftside = () => {
   const [profile, setProfile] = useState<userProfile | null>(null);
   const navigate = useNavigate();
   const handleLogout = async () => {
-    const token = window.localStorage.getItem("token");
+    const token = window.localStorage.getItem("accessToken");
     console.log("로그아웃 클릭");
     if (token) {
       try {
@@ -67,7 +67,7 @@ const Leftside = () => {
       </div>
       <div className={styles.card}>
         <div>
-          <a href="/myarticle" className={styles.myarticle}>
+          <a href="/mypost" className={styles.myarticle}>
             내가 쓴 글
           </a>
           <a href="/mycomment" className={styles.mycommentarticle}>
