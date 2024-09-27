@@ -1,14 +1,14 @@
-import MyActivity from "../components/MyActivity";
+import MyActivity from "../components/MyActivity.tsx";
 import styles from "../styles/MyCommentPage.module.less";
-import DefaultContainer from "../components/DefaultContainer";
-import Submenu from "../components/Submenu";
-import LivePopularPosts from "../components/LivePopularPosts";
-import HotArticle from "../components/HotArticle";
+import DefaultContainer from "../components/DefaultContainer.tsx";
+import Submenu from "../components/Submenu.tsx";
+import LivePopularPosts from "../components/LivePopularPosts.tsx";
+import HotArticle from "../components/HotArticle.tsx";
 import { useEffect, useState } from "react";
-import CustomError from "../components/CustomError";
-import { getMyScrap } from "../service/BoardService";
+import CustomError from "../components/CustomError.tsx";
+import { getMyScrap } from "../service/BoardService.ts";
 const MyScrapPage = () => {
-  const [myActivityData, setMyActivityData] = useState<MyActivity[] | null>(
+  const [myActivityData, setMyActivityData] = useState<BoardData[] | null>(
     null
   );
 
@@ -39,7 +39,9 @@ const MyScrapPage = () => {
               </h1>
             </div>
             {myActivityData ? (
-              <MyActivity myActivity={myActivityData} />
+              myActivityData.map((boardData) => (
+                <MyActivity key={boardData.boardId} {...boardData} />
+              ))
             ) : (
               <CustomError />
             )}
