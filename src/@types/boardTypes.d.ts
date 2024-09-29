@@ -1,6 +1,7 @@
 interface BoardData {
   boardId: number;
   boardName: string;
+  totalPage?: number;
   posts: Post[];
 }
 

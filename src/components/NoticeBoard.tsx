@@ -1,8 +1,20 @@
 import React, { useState } from "react";
 import styles from "../styles/NoticeBoard.module.less";
-import Write from "./Write";
+import Write from "./Write.tsx";
 
-const NoticeBoard: React.FC<NoticeBoardData> = ({ boardName, articles }) => {
+interface BoardDataProps {
+  boardName: string;
+  posts: Post[];
+  handleNext: () => void;
+  handlePrev: () => void;
+}
+
+const NoticeBoard: React.FC<BoardDataProps> = ({
+  boardName,
+  posts,
+  handleNext,
+  handlePrev,
+}) => {
   const [write, setWrite] = useState<boolean>(false);
 
   const handleWrite = (e: React.MouseEvent) => {
@@ -31,11 +43,11 @@ const NoticeBoard: React.FC<NoticeBoardData> = ({ boardName, articles }) => {
         <div className={styles.popular}>
           <div className={styles.group}></div>
           <div className={styles.items}>
-            {articles.map((article) => (
-              <div className={styles.item} key={article.id}>
+            {posts.map((post) => (
+              <div className={styles.item} key={post.postId}>
                 <a href="#">
-                  <span>{article.title}</span>
-                  <div className={styles.posvote}>{article.votes}</div>
+                  <span>{post.postTitle}</span>
+                  <div className={styles.posvote}>{post.likes}</div>
                 </a>
               </div>
             ))}
@@ -54,18 +66,26 @@ const NoticeBoard: React.FC<NoticeBoardData> = ({ boardName, articles }) => {
         )}
 
         <div className={styles.articlelist}>
-          {articles.map((article) => (
-            <a href="#" key={article.id} className={styles.articleitem}>
+          {posts.map((post) => (
+            <a href="#" key={post.postId} className={styles.articleitem}>
               <div className={styles.desc}>
-                <h2 className={styles.mediumbold}>{article.title}</h2>
-                <p className={styles.medium}>{article.content}</p>
+                <h2 className={styles.mediumbold}>{post.postTitle}</h2>
+                <p className={styles.medium}>{post.postContent}</p>
                 <div className={styles.info}>
                   <time className={styles.tsmall}></time>
-                  <h3 className={styles.hsmall}>{article.author}</h3>
+                  <h3 className={styles.hsmall}>{post.author}</h3>
                 </div>
               </div>
             </a>
           ))}
+        </div>
+        <div className={styles.paginationBtn}>
+          <button className={styles.prev} onClick={handlePrev}>
+            이전
+          </button>
+          <button className={styles.next} onClick={handleNext}>
+            다음
+          </button>
         </div>
       </div>
     </div>
