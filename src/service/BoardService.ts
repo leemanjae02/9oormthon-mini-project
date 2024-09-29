@@ -10,11 +10,16 @@ export const getMiniNoticeBoard = async () => {
   }
 };
 
-export const getBoard = async (boardId: string) => {
+export const getBoard = async (boardId: string, page: number) => {
   try {
     if (boardId) {
       const response = await CustomAxios.get(
-        `http://localhost:3002/boards/${boardId}`
+        `http://localhost:3002/boards/${boardId}`,
+        {
+          params: {
+            page: page,
+          },
+        }
       );
       return response.data;
     }
@@ -26,7 +31,7 @@ export const getBoard = async (boardId: string) => {
 
 export const getMyComment = async () => {
   try {
-    const response = await CustomAxios.get("http://localhost:3003/myComment"); // 내가 쓴 댓글 조회
+    const response = await CustomAxios.get("http://localhost:3003/boards"); // 내가 쓴 댓글 조회
     if (response.status === 200) {
       return response;
     }
@@ -97,5 +102,18 @@ export const upLoadFiles = async (
   } catch (error) {
     console.log(error);
     return { success: false };
+  }
+};
+
+export const postLike = async (boardId: number, postId: number) => {
+  try {
+    const response = await CustomAxios.post(
+      `/boards/${boardId}/posts/${postId}`
+    );
+    if (response.status === 200) {
+      return response;
+    }
+  } catch (error) {
+    console.log(error);
   }
 };
