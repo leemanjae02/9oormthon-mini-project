@@ -9,7 +9,7 @@ interface SendMessageModalProps extends SendMessageType {
 const SendMessageModal: React.FC<SendMessageModalProps> = ({
   boardId,
   postId,
-  messageBoxId,
+  chatRoomId,
   receiverId,
   setModalStatus,
 }) => {
@@ -31,7 +31,7 @@ const SendMessageModal: React.FC<SendMessageModalProps> = ({
       const response = await SendMessage(
         boardId,
         postId,
-        messageBoxId,
+        chatRoomId,
         newMessage,
         Number(senderId),
         receiverId
@@ -44,7 +44,7 @@ const SendMessageModal: React.FC<SendMessageModalProps> = ({
       console.log(error);
     }
   };
-  console.log("메시지 모달", "쪽지함번호", messageBoxId, "수신자", receiverId);
+  console.log("메시지 모달", "쪽지함번호", chatRoomId, "수신자", receiverId);
   return (
     <div>
       <div className={styles.modalWrap}></div>

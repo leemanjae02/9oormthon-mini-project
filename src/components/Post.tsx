@@ -1,5 +1,5 @@
 import styles from "../styles/Article.module.less";
-import { addToScrap } from "../service/BoardService";
+import { addScrap } from "../service/BoardService";
 import SendMessageModal from "./SendMessageModal";
 import { useState } from "react";
 import useFormattedDate from "../hook/UseFormattedDate";
@@ -65,9 +65,7 @@ const Post: React.FC<PostsData> = ({ posts }) => {
                 <span className={styles.posvotebtn}>공감</span>
                 <span
                   className={styles.scrapbtn}
-                  onClick={() =>
-                    addToScrap(post.boardId as number, post.postId)
-                  }
+                  onClick={() => addScrap(post.boardId as number, post.postId)}
                 >
                   스크랩
                 </span>
