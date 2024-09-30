@@ -29,6 +29,20 @@ export const getBoard = async (boardId: string, page: number) => {
   }
 };
 
+export const getPost = async (boardId: number, postId: number) => {
+  try {
+    const response = await CustomAxios.get(
+      `http://localhost:3003/posts?boardId=${boardId}&postId=${postId}`
+    );
+    if (response.status === 200) {
+      console.log(response.data);
+      return response.data;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const getMyComment = async () => {
   try {
     const response = await CustomAxios.get("http://localhost:3003/boards"); // 내가 쓴 댓글 조회
@@ -105,7 +119,7 @@ export const upLoadFiles = async (
   }
 };
 
-export const postLike = async (boardId: number, postId: number) => {
+export const addLike = async (boardId: number, postId: number) => {
   try {
     const response = await CustomAxios.post(
       `/boards/${boardId}/posts/${postId}`
@@ -115,5 +129,17 @@ export const postLike = async (boardId: number, postId: number) => {
     }
   } catch (error) {
     console.log(error);
+  }
+};
+
+export const addScrap = async (boardId: number, postId: number) => {
+  try {
+    console.log(boardId, postId);
+    const response = await CustomAxios.post(`/scrap/${boardId}/${postId}`);
+    if (response.status === 200) {
+      return response.data.statusCode;
+    }
+  } catch (error) {
+    console.log("스크랩 추가 중 에러 발생", error);
   }
 };

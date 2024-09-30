@@ -3,6 +3,7 @@ import styles from "../styles/NoticeBoard.module.less";
 import Write from "./Write.tsx";
 
 interface BoardDataProps {
+  boardId: string;
   boardName: string;
   posts: Post[];
   handleNext: () => void;
@@ -10,6 +11,7 @@ interface BoardDataProps {
 }
 
 const NoticeBoard: React.FC<BoardDataProps> = ({
+  boardId,
   boardName,
   posts,
   handleNext,
@@ -26,7 +28,7 @@ const NoticeBoard: React.FC<BoardDataProps> = ({
     <div>
       <div className={styles.wraptitle}>
         <h1>
-          <a href="#">{boardName}</a>
+          <a href={`/boards/${boardId}`}>{boardName}</a>
         </h1>
       </div>
       <div className={styles.wrapbubbles}>
@@ -67,12 +69,16 @@ const NoticeBoard: React.FC<BoardDataProps> = ({
 
         <div className={styles.articlelist}>
           {posts.map((post) => (
-            <a href="#" key={post.postId} className={styles.articleitem}>
+            <a
+              href={`/boards/${boardId}/${post.postId}`}
+              key={post.postId}
+              className={styles.articleitem}
+            >
               <div className={styles.desc}>
                 <h2 className={styles.mediumbold}>{post.postTitle}</h2>
                 <p className={styles.medium}>{post.postContent}</p>
                 <div className={styles.info}>
-                  <time className={styles.tsmall}></time>
+                  <time className={styles.tsmall}>{post.timestamp}</time>
                   <h3 className={styles.hsmall}>{post.author}</h3>
                 </div>
               </div>
