@@ -42,14 +42,14 @@ const MessagePage = () => {
           <div className={styles.items}>
             {messageBoxData?.map((messageBox) => (
               <Link
-                to={`/message/${messageBox.messageBoxId}`}
+                to={`/message/${messageBox.chatRoomId}`}
                 className={`${styles.item} ${
-                  messageBox.messageBoxId === selectedMessageId
+                  messageBox.chatRoomId === selectedMessageId
                     ? styles.itemActive
                     : ""
                 }`}
-                key={messageBox.messageBoxId}
-                onClick={() => handleMessageBox(messageBox.messageBoxId)}
+                key={messageBox.chatRoomId}
+                onClick={() => handleMessageBox(messageBox.chatRoomId)}
               >
                 <time className={styles.time}>
                   {formatDate(messageBox.timeStamp)}
@@ -61,7 +61,7 @@ const MessagePage = () => {
           </div>
         </div>
         <div className={styles.rightBox}>
-          <MessageContainer messageBoxId={selectedMessageId} />
+          <MessageContainer chatRoomId={selectedMessageId} />
         </div>
       </div>
     </div>

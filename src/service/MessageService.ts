@@ -2,7 +2,7 @@ import CustomAxios from "../api/CustomAxios";
 
 export const getMessageBox = async () => {
   try {
-    const response = await CustomAxios.get("http://localhost:3005/messageBox");
+    const response = await CustomAxios.get("http://localhost:3005/chatRoom");
     if (response.status === 200) {
       return response;
     }
@@ -12,10 +12,10 @@ export const getMessageBox = async () => {
   }
 };
 
-export const getMessage = async (messageBoxId: number) => {
+export const getMessage = async (chatRoomId: number) => {
   try {
     const response = await CustomAxios.get(
-      `http://localhost:3006/messages?messageBoxId=${messageBoxId}`
+      `http://localhost:3006/messages?chatRoomId=${chatRoomId}`
     );
     if (response.status === 200) {
       console.log("호출", response.data);
@@ -29,7 +29,7 @@ export const getMessage = async (messageBoxId: number) => {
 export const SendMessage = async (
   boardId: number | undefined,
   postId: number | undefined,
-  messageBoxId: number | undefined,
+  chatRoomId: number | undefined,
   newMessage: string,
   senderId: number,
   receiverId: number
@@ -42,7 +42,7 @@ export const SendMessage = async (
       "게시글id",
       postId,
       "채팅방id",
-      messageBoxId,
+      chatRoomId,
       "송신자id",
       senderId,
       "수신자id",
@@ -50,14 +50,14 @@ export const SendMessage = async (
       "메시지",
       newMessage
     );
-    const url = messageBoxId
-      ? `http://localhost:3007/messages/${messageBoxId}`
-      : `http://localhost:3007/boards/${boardId}/posts/${postId}/createMessage`;
+    const url = chatRoomId
+      ? `http://localhost:3007/messages/${chatRoomId}`
+      : `http://localhost:3007/boards/${boardId}/posts/${postId}/chatRoom`;
 
     const response = await CustomAxios.post(url, {
-      message: newMessage,
-      senderId: senderId,
-      receiverId: receiverId,
+      newMessage,
+      senderId,
+      receiverId,
       timeStamp: new Date().toISOString(),
     });
 

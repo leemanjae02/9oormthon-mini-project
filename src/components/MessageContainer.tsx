@@ -6,10 +6,10 @@ import { useQuery } from "react-query";
 import useFormattedDate from "../hook/UseFormattedDate.ts";
 
 interface MessageProps {
-  messageBoxId: number;
+  chatRoomId: number;
 }
 
-const MessageContainer: React.FC<MessageProps> = ({ messageBoxId }) => {
+const MessageContainer: React.FC<MessageProps> = ({ chatRoomId }) => {
   const [modalStatus, setModalStatus] = useState<boolean>(false);
   const currentUserId = window.localStorage.getItem("userId"); // 현재 사용자 고유 userId
 
@@ -18,9 +18,9 @@ const MessageContainer: React.FC<MessageProps> = ({ messageBoxId }) => {
     refetch,
     isLoading,
     isError,
-  } = useQuery(["message", messageBoxId], () => getMessage(messageBoxId), {
-    enabled: !!messageBoxId,
-    staleTime: 300000, // 5분(300000ms) 동안 캐시된 데이터 사용
+  } = useQuery(["message", chatRoomId], () => getMessage(chatRoomId), {
+    enabled: !!chatRoomId,
+    staleTime: 300000,
   });
 
   const handleModal = (e: React.MouseEvent) => {
@@ -38,7 +38,7 @@ const MessageContainer: React.FC<MessageProps> = ({ messageBoxId }) => {
     <div className={styles.msgContainer}>
       {modalStatus && (
         <SendMessageModal
-          messageBoxId={messageBoxId}
+          chatRoomId={chatRoomId}
           setModalStatus={setModalStatus}
           receiverId={messageData?.data[0].receiverId}
         />

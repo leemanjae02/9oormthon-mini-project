@@ -1,13 +1,13 @@
 interface MessageBox {
   // 쪽지함 데이터 타입
-  messageBoxId: number;
+  chatRoomId: number;
   author: string;
   lastMessage: string;
   timeStamp: string;
 }
 
 interface Message {
-  messageBoxId: number;
+  chatRoomId: number;
   senderId: number;
   receiverId: number;
   senderContent: string | null;
@@ -24,6 +24,6 @@ interface MessageResponse {
 interface SendMessageType {
   boardId?: number;
   postId?: number;
-  messageBoxId?: number;
+  chatRoomId?: number;
   receiverId: number;
 }
