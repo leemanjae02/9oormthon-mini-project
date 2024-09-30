@@ -12,8 +12,8 @@ const BoardPage = () => {
   const { boardId } = useParams<{ boardId: string }>();
   const [boardData, setBoardData] = useState<BoardData | null>(null);
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const totalPage = boardData?.totalPage;
-  const checkTotalPage = totalPage ?? 1; // totalPage !== undefined ? totalPage : 1을 줄인 문법 최신 자바스크립트에서 지원 (nullish coalescing operator)
+  const totalPages = boardData?.totalPages;
+  const checkTotalPage = totalPages ?? 1; // totalPage !== undefined ? totalPage : 1을 줄인 문법 최신 자바스크립트에서 지원 (nullish coalescing operator)
 
   const getBoardData = async () => {
     try {
@@ -54,6 +54,7 @@ const BoardPage = () => {
           <div className={styles.center}>
             {boardData && (
               <NoticeBoard
+                boardId={boardId}
                 boardName={boardData.boardName}
                 posts={boardData.posts}
                 handleNext={handleNext}

@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import MainPage from "./pages/MainPage.tsx";
 import BoardPage from "./pages/BoardPage.tsx";
-import ArticlePage from "./pages/ArticlePage.tsx";
+import PostsPage from "./pages/PostsPage.tsx";
 import LoginPage from "./pages/LoginPage.tsx";
 import MyCommentPage from "./pages/MyCommentPage.tsx";
 import SignUpPage from "./pages/SignUpPage.tsx";
@@ -19,7 +19,7 @@ function App() {
       <Route path="/mycomment" element={<MyCommentPage />} />
       <Route path="/myscrap" element={<MyScrapPage />} />
       <Route path="/my" element={<MyInforPage />} />
-      <Route path="/boards/:boardId/:postId" element={<ArticlePage />} />
+      <Route path="/boards/:boardId/:postId" element={<PostsPage />} />
       <Route path="/boards/:boardId" element={<BoardPage />} />
       <Route path="/auth" element={<AuthPage />} />
       <Route path="/signup" element={<SignUpPage />} />
